@@ -1,0 +1,91 @@
+lvm ... (logical volume)
+used to manage volume and disk.
+suppose in window we divided the disk into C,D so on drive, same in linux we divided the disk into volume.
+pv...(physical volume)
+it is a stortage like SSD, HD, ... but lvm used to manage  their volume and partations.
+--------------
+volume group..
+it is storage which consists one are more physical volumes.
+-----
+How to clear RAM Memory Cache, Buffer and Swap Space on Linux
+
+https://www.hostbillo.com/blog/clear-ram-memory-cache-buffer-and-swap-space-on-linux-hostbillo/
+
+-------------------------
+How to record/save all user terminal activity automatically
+
+https://cpanelplesk.com/recordsave-user-terminal-activity-automatically/
+
+------------
+check the users in linux. 
+sudo vi passwd
+--------
+
+How can I restrict the normal user to run only limited set of commands in centos?
+https://www.webconn.tech/kb/how-to-restrict-normal-user-to-run-only-limited-set-of-commands
+
+--------------
+:: soft link:- link will be removed if the original file will be removed. (ln -s)
+:: hard linK:- renaming, deleting, renaming the file, will not affect the link (ln)
+---------------------------
+DNAT ..... vm port bind pc ports.
+--------------
+extract logs and add generate zip file.
+zip file.
+i. zip -m myfile.zip *.c
+ii. zip file 24hourslogs 
+
+how to get previous 24 hour var message log in linux
+ii. journalctl -S-24h
+List ZIP File Contents
+i. zip -sf files.zip
+----------------------------------
+create three users, user1 will be the memeber of group 2
+i. user1... RWE
+ii. uuser2... only write 
+iii. user3... cann't do nothing
+----------------------
+1. adduser saiqa
+ii. deluser saiqa
+iii. sudo groupadd demo ... add group
+iv. sudo usermod -aG demo1 user1 .....  add user in group
+v. chown user1 file1.txt .. change file user.name
+vi. chgrp demo1 file1.txt .. will change the file user group
+vii.  chmod u=rwx,g=w,o-rwx file1.txt ... file permissions
+user1. setfacl -R -m user:user2:rwx file1.txt 
+user2. setfacl -R -m user:user2:rw file1.txt 
+user3. setfacl -R -m user:user3:rx file1.txt 
+touch file{1..5}.txt
+
+--------------
+i. scp(secure copy) ... it is used to copy dir or file from local to remote https://linuxize.com/post/how-to-use-scp-command-to-securely-transfer-files/
+scp /users/saiqa.txt root@172.20.4.39:/home/saiqa ... local to remote
+scp /home/run.sh root@172.20.4.30:/Users ... remote to local
+
+ii. Rsync ...  it is used to transfer file or dir between local machine to anthoer host. https://www.tecmint.com/rsync-local-remote-file-synchronization-commands/
+
+local server to remote server ... rsync -avzh /root/rpmpkgs root@192.168.0.141:/root/
+remoter server tolcoal server .. rsync -avzh root@192.168.0.141:/root/rpmpkgs /tmp/myrpms
+----------
+iii. Tlog, 
+Asciinema .....  open source terminal session recorder.
+script... tols for session recording
+172.20.4.30
+-------------------------------
+
+create logrotate 
+cd etc/logrotate... https://adamtheautomator.com/logrotate-linux/, https://stackoverflow.com/questions/8962477/logrotate-files-with-date-in-the-file-name
+/var/log/yum.log {
+    rotate 10
+    dateext
+    missingok
+    notifempty
+    maxsize 10M
+    compress
+    delaycompress
+    weekly
+    create 0600 root root
+}
+sudo logrotate -d /etc/logrotate.d/yum ... log create command.
+--------------------------------
+

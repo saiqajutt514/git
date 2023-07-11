@@ -1,0 +1,33 @@
+Monolethics .... every service cconnected with each others.
+Microservices..... independent every service works.
+
+how to install k8s setup on ubuntu?
+https://www.linkedin.com/pulse/install-kubernetes-cluster-ubuntu-kubeadm-abhishek-rana/,,,,
+
+https://spot.io/resources/kubernetes-architecture/11-core-components-explained/
+
+1. kubernetes ... orchastration tool... used to managing container..... 
+i) etcd ... just like database which is used to store key value
+ii) contraller_Manager.... keeps track whats happening in the cluster.
+iii) api server .... every request of kubelet comes here.
+iv) scheduler ... schedule all task
+v) group of server is called clusters.
+vi) kubectl and kubelet ... kubectl basically is the CLI tool which is used to create kubernetes clusters, kubelet used to create, destory and update the clusters.
+vii) node is the server but pod is the smallest unit of kubernetes.
+viii) minikube ... used to run kubernetes locally.
+ix) kube proxy ... located on nodes .. kube-proxy maintains network rules on nodes
+2. master,slave,multimaster 
+3. deployment,service 
+4. services 
+i) cluster ip ... internal communication
+ii) Node port .... external communication within nod's
+iii) Load balancer ..... adds the ability to configure external load balancers in public and private clouds
+iv) External name .... ExternalName Service acts as a proxy, allowing a user to redirect requests to a service sitting outside (or inside) the cluster.
+-----------------------------------------
+5. secrets
+6. Network types
+i) Container-to-container networking
+ii) Pod-to-pod networking
+iii) Pod-to-service networking
+iv) Internet-to-service networking
+<<-=------------------->>

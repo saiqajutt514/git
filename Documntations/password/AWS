@@ -1,0 +1,86 @@
+-------------AWS---------------------- 
+1. Region ---- it is a location with mutiple availablility zones.
+2. AWS availablility ZOnes --- these are the isolated locations within a region.
+3. LOCAL zone : not in every region and local zone , are seperate from availablility zone near to population, industries, IT.
+4. wavelength zone : reduce latency for the mobile devices and end-user by providing the availablility zone in between the 5g network providers.
+____________
+5. VPC per Region =  default=5 / need to quote after that
+6. Subnets per VPC = 200 default / quote request after that
+Cidr per VPC = 5 , max 50 , after 5 , need to quote
+___________________
+AWS VPC, it enable  us to create a private network in our own isolated Area.
+AWS VPC cidr are the range of ips allocated in a VPC.
+       /24 = 256 IPs
+       /16 = 65536 IPs
+easiest way to find the cidr ==== total are 32 
+if given cidr is /24 then
+                           32-cidr
+                         (2)
+Subnet is a segmented piece of a larger network
+support we have a network 10.10.0.0/24
+then what will be the subnets : 10.10.1.0/24, 10.10.1.0/24 so on
+___________________
+7. Security Group
+ it is a virtual firewall that help us to control traffic comming toward the instance and going from the instance
+8. NACL is a firewalld that protect the subnet and sg help to protect the instance.
+___________________
+9. Internet Gateway and Nat Gateway
+internet gateway allow a instance to access the internet with public ip and nat gateway allow instance to access the internet without public Ips.
+
+internet Gateway                     instance <--------two way connection--------> external service
+10. NAT Gateway                          instance --------one way connection--------> external service
+__________________
+11. Endpoint ---- VPC endpoint help to create a connection with any service without requiring that you use a what gateway , it deosnt matter
+__________________
+12. DHCP options : it help to resolve the domains name and ip addresses or dns.
+or
+                it is a network configuration to allow instance to communicate in a private subnet.
+                also we resolve dns or domains names by using it.
+__________________
+13. DNS and hostname 
+DNS is a standard to resolve the naem over the internet corresponding to their ips.
+hostname is a name uniquely assigned to a instance and it composed of domain name and hostname.
+__________________
+14. Stateless and state full
+stateless, deos not store the data 
+statefull storethe data. example dbs require storage
+___________________
+does security group are stateless or statefull
+Security groups are statefull because they track or storethe information of incoming and outgoing traffic from and to an instance.
+__________________
+aws git creds --- we use git init and git --config in aws cnsole to use aws credentials 
+__________________
+15. ECS 
+16. ECR
+17. S3
+18. Lambda
+
+19. ECR vs other registries
+
+20. cloud front ---- to speed up the statis and dynamic web pages or content
+
+21. cloud formation ---- IAAC like terraform
+22. Amplify......... frontend web and mobile developers easily build, ship, and host full-stack applications on AWS
+23. Transit gateway........  you can use to interconnect your virtual private clouds (VPCs) and on-premises networks
+24. fadrated access..... user that can access secure AWS account resources with external identities
+25. instant profile IAM ...  container for an IAM role that you can use to pass role information to an Amazon EC2 instance when the instance starts
+26. load balancer types.
+i) application LB .. HTTP,HPPTS
+ii) Network LB .. (TCP/SSL)
+27. kms .. key management service used to protect data and gives authenticsation to used used their networks in their organizations.
+28. firestore .. nosql document oriented db, sql contains on rows and colums but it's documents based.
+29. ECS prerequistes .... https://docs.aws.amazon.com/codedeploy/latest/userguide/tutorial-ecs-prereqs.html
+30. Artifacts .... When an action runs, or an event occurs, it acts upon a file or a set of files. These files are called artifacts,
+These artifacts are used in later steps in the pipeline.
+31. Amazon API Gateway
+Create, maintain, and secure APIs at any scale
+
+--------------------------------->>>> 
+aws project guidence....:-
+https://www.showwcase.com/show/35459/building-a-resilient-three-tier-architecture-on-aws-with-deploying-mern-stack-application
+
+----------------
+ECR ... elastic container registory is used to store docker images.
+ECS ... elastic container services is used to the ECS takes these files and actively uses them in the deployment of applications.
+-----------------
+

@@ -1,0 +1,15 @@
+23/6/2023
+1. google analytics ..... it is tool, Google Analytics is a platform that collects data from your websites and apps to create reports that provide insights into your business, used to track websites activity such as traffic, traffic source, session duration etc.
+propert means from which website you want to track the data.
+Threat Monitoring tools:- SIEM, EDR, XDR, MDR & SOAR
+2. siem wazuh .... used to protect networks, virtulized environments and cloud environments, SIEM security information Event management, Wazuh is used to collect, aggregate, index and analyze security data, helping organizations detect intrusions, threats and behavioral anomalies. As cyber threats are becoming more sophisticated, real-time monitoring and security analysis are needed for fast threat detection and remediation.
+Wazuh features:
+i. security analytics
+ii. intitution detection
+iii. cloud security 
+iv. vunerability detections
+Wazuh components:-
+i. wazuh agent .. installed on host machine you would like to monitor
+ii. wazuh server .. all traffic recives  
+3. intitution detection system. 
+-------------

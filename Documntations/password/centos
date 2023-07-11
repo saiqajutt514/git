@@ -1,0 +1,162 @@
+1. add this, if networks not working on centos.
+https://superuser.com/questions/915536/centos-7-virtualbox-no-internet-access
+2. docker run -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts-jdk11
+3. cd /etc/ssh/sshd_config .... permit yes
+sudo systemctl restart sshd_config
+ssh root@172.2.4.40
+-------------------
+
+http://172.20.4.40:8080/
+-----------
+
+databse backup .... bash scripting 
+cron's jobs
+
+------------
+
+centOS problem 
+reset the machine when machine start press 'e'
+and on linux16 line add this selinux=0
+selinux=0
+
+The file /selinux/enforce indicates the current SELinux mode. Manipulating the file changes the current SELinux mode. The value that is displayed indicates the current mode: the value 0 indicates permissive mode and 1 indicates enforcing mode.
+
+--------------
+Reset password.
+
+etc/grub.d ..... grub/system_loader file 
+
+1. rd.break
+2. mount -o remount rw /sysroot
+3. chroot /sysroot
+4. passwd
+-----------
+when ssh not connected how to do,
+go /etc/ssh/sshd.config
+
+https://serverfault.com/questions/1007075/sshd-not-starting-on-centos-8-1
+
+2. failed to remove dir not empty,
+.... rm -rf dir_name
+------------------------------------------
+
+unable to connect with ssh
+
+insatll 
+sudo yum insatll openssh-server
+sudo systemctl status sshd
+
+-------------------
+copy folder to folder sudo cp -r /node-todo-cicd/views/ /node_project/
+--------------
+:: git config --global user.email "saiqajutt8@gmail.com"
+:: git config --global user.name "saiqajutt8"
+
+1. git init
+2. git remote add origin git clone https://saiqajutt8@bitbucket.org/saiqa8/node_project.git
+3. git add .
+4. git commit -m "added"
+5. git push origin master
+--------------
+
+docker container run -it -v /tmp:/tmp -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker/containers:/var/lib/docker/containers:ro -e ACCOUNT_UUID={00a120a0-d309-4b3d-8f10-cd7cc6cb21ad}  -e RUNNER_UUID={e684addb-9768-5882-9858-9a5ac3d61d88} -e RUNTIME_PREREQUISITES_ENABLED=true -e OAUTH_CLIENT_ID=KhYVtwto52qh6AVzeOjjBBVeEzMXRloi -e OAUTH_CLIENT_SECRET=ATOAvK4PzmjdEre3W8F-FYASYRV98OEfFNojCJAdt60LuWncWLbJDZ8JgP-rQaQN8zszEBF276CC -e WORKING_DIRECTORY=/tmp --name runner-e684addb-9768-5882-9858-9a5ac3d61d88 docker-public.packages.atlassian.com/sox/atlassian/bitbucket-pipelines-runner:1
+
+# Example
+pipelines:
+  default:
+      - step:
+          runs-on:
+            - self.hosted
+            - linux
+          script:
+----------------------------------------------
+
+1. How To Configure SSH Key-based Authentication In Linux
+create ssh-keygen
+
+2. Allow Or Deny SSH Access To A Particular User Or Group In Linux
+go to sshd_config file allowuser yes .. 
+3. Limit The Number Of SSH Logins Per User/Group/System
+sudo nano /etc/security/limits.conf... 
+add this:- ostechnix  hard    maxlogins   1
+4. Restrict Access To Linux Servers Using TCP Wrappers
+It decides which host should be allowed to access a specific network service.....
+* sudo vi /etc/hosts.allow, * sudo vi /etc/hosts.allow ... https://ostechnix.com/restrict-access-linux-servers-using-tcp-wrappers/
+5. Execute Commands On Remote Linux Systems Via SSH
+used to chcke date, kernal status and disk space .. * ssh user1@server1 date... ** ssh user1@72.20.4.146 'df -H'
+6. How To Create SSH Alias In Linux
+--------
+7. How To SSH Into A Particular Directory On Linux
+through ssh we can switch into specific dir or file ... **  ssh -t user1@192.172.20.4.146 'cd var/www/file1.txt ; bash'
+https://ostechnix.com/how-to-ssh-into-a-particular-directory-on-linux/
+8. SSLH – Share A Same Port For HTTPS And SSH
+sslh establish incoming traffic ... **https://ostechnix.com/sslh-share-port-https-ssh/
+9. ScanSSH – Fast SSH Server And Open Proxy Scanner
+___________
+10. How To Resume Partially Transferred Files Over SSH Using Rsync
+rsync -P -rsh=ssh compose root@172.20.4.146:/home
+11. How To Run Single Command On Multiple Remote Systems At Once
+--------
+
+12. DSH – Run A Linux Command On Multiple Hosts At A Time
+-----
+13. How To Stop SSH Session From Disconnecting In Linux
+------
+14. How To Enable SSH On FreeBSD
+freeBSD basically it is the OS lik ubuntu, centos for further detail's,
+https://ostechnix.com/how-to-enable-ssh-on-freebsd/
+
+-------------------------------
+RAID ..(used for storage virtulization)
+I. RAID 0 .... used striping data, data divided into blocks, read write operations fast but no backupplan
+II. RAID 1.... data mirroring used .. two hard disk used, same block will be at opposite side, in it if one block failed same time other block will be used.
+III. RAID 5.. (parity across disks)max 3 hard drive used, RW operations fast, error tolarent... data save of one disk to another..
+**** mdadm ... used to create, management,monitoring the RAID devices.
+
+follow link 
+https://www.youtube.com/watch?v=4-iADxgZGFg
+
+1. sudo yum install -y mdadm
+2. add hard disk 4 ... lsblk
+3.  mdadm -E /dev/sd[b-f]
+4. mdadm --create /dev/md5 --level=5 --raid-devices=3 /dev/sd[b-d]1
+5. mdadm -D /dev/md5
+6. mdadm -E /dev/sdb1
+7. mkfs.ext4 /dev/md5
+8. blkid /dev/md5 ... UUID copy 
+9.  mkdir /raid5
+10. mount -av
+11. df -h 
+
+in this way, RAID works and created.
+-----------------------------------------------------------
+Formatting RAID5 as LVM physical volumes
+https://www.youtube.com/watch?v=drSrbUPtO78&t=225s
+ LVM allows us to to add, remove, resizing the size online in the existing volume without taking any downtime.
+ One of the main advantages of LVM partition is that we can extend its size online without any downtime
+ 
+apply LVM at raid5 ..
+1. sudo umount -fl /dev/md5 ...unmount raid 
+2. sudo mdadm --detail --scan 
+3. sudo pvcreate /dev/md5
+4.  sudo pvs
+5. sudo pvdisplay
+6. sudo vgcreate V0100 /dev/md5
+7. sudo vgdisplay
+8. sudo vgs
+9. sudo lvcreate -L 1.25G V0100 -n Data01
+10. sudo lvs
+11. sudo lvdisplay
+12. sudo mkfs.ext4 /dev/V0100/Data01
+13. sudo yum install kmod-xfs xfsdump xfsprogs dmapi
+14. sudo mkdir /RAID5
+15. sudo mount /dev/V0100/Data01 /RAID5/
+16. df -h
+----------------
+
+we also extend size of hard disk using lv
+1. sudo lvextend --size +0.9G  -n /dev/V0100/Data01
+2. sudo lvs
+3. sudo vgs
+4.  df -h
+---------------------------------
